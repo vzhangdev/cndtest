@@ -8,7 +8,7 @@ var timer = setInterval(() => {
                 clearInterval(timer);
                                          
 $(document).ready(function(){  
-    $("p").click(function(){  
+    $("#test").click(function(){  
         alert("This paragraph was clicked.");  
     });  
 });  
