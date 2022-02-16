@@ -1,18 +1,25 @@
- var script = document.createElement('script');
-        script.src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js';
-        script.type='text/javascript';
-        document.getElementsByTagName('head')[0].appendChild(script);
+'use strict';
 
-var timer = setInterval(() => {
-            if (typeof $ != "undefined") {
-                clearInterval(timer);
-                                         
-$(document).ready(function(){  
-    $("#test").click(function(){  
-        alert("This paragraph was clicked.");  
-    });  
-});  
-            }
-        }, 100);
-                         
+const e = React.createElement;
 
+class LikeButton extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { liked: false };
+  }
+
+  render() {
+    if (this.state.liked) {
+      return 'You liked this.';
+    }
+
+    return e(
+      'button',
+      { onClick: () => this.setState({ liked: true }) },
+      'Like'
+    );
+  }
+}
+
+const domContainer = document.querySelector('#like_button_container');
+ReactDOM.render(e(LikeButton), domContainer);
